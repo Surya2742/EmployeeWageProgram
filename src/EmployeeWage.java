@@ -7,30 +7,35 @@ public class EmployeeWage {
         int absentHour = 0;
         int wagePerHour = 20;
         int workingDayInMonth = 20;
-        int empCheck = (int) Math.floor(Math.random() * 3);
-        switch (empCheck) {
+        int maxWorkingHrs = 100;
 
-            case fullTimeWorking: {
-                System.out.println("Employee is Present");
-                System.out.println("Working time is " + fullTimeHour + " and the salary is " + fullTimeHour * wagePerHour);
-                System.out.println("Monthly Wage of Employee is " + fullTimeHour * wagePerHour * workingDayInMonth);
-                break;
+        int monthlyWage = 0;
+        int empHrs = 0;
+        int totalEmpHrs = 0;
+        int totalWorkingDays = 0;
+
+        while (totalEmpHrs < maxWorkingHrs && totalWorkingDays < workingDayInMonth) {
+            totalWorkingDays++;
+            int empCheck = (int) Math.floor(Math.random() * 3);
+            switch (empCheck) {
+                case fullTimeWorking: {
+                    empHrs = 8;
+                    break;
+                }
+                case isPartTime: {
+                    empHrs = 4;
+                    break;
+                }
+                default: {
+                    empHrs = 0;
+                    break;
+                }
             }
-
-            case isPartTime: {
-                System.out.println("Employee is Working Part Time");
-                System.out.println("Working time is " + partTimeHour + " and the salary is " + partTimeHour * wagePerHour);
-                System.out.println("Monthly Wage of Employee is " + partTimeHour * wagePerHour * workingDayInMonth);
-                break;
-            }
-
-            default: {
-                System.out.println("Employee is Absent");
-                System.out.println("Employee worked for " + absentHour + " Hours and the salary is " + absentHour * wagePerHour);
-                System.out.println("Monthly Wage of Employee is " + absentHour * wagePerHour * workingDayInMonth);
-                break;
-            }
-
+            totalEmpHrs = totalEmpHrs + empHrs;
         }
+        monthlyWage = totalEmpHrs * wagePerHour;
+        System.out.println("Total Employee Hours" + totalEmpHrs);
+        System.out.println("Total Working Days" + totalWorkingDays);
+        System.out.println("Employee Monthly Wage = " + monthlyWage);
     }
 }
