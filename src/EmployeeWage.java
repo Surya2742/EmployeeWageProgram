@@ -1,20 +1,16 @@
 public class EmployeeWage {
-    public static void main(String[] args) {
-        final int fullTimeWorking = 1;
-        int fullTimeHour = 8;
-        final int isPartTime = 2;
-        int partTimeHour = 4;
-        int absentHour = 0;
+    private final int fullTimeWorking = 1;
+    private final int isPartTime = 2;
+    void EmpWageCalculateMethod() {
         int wagePerHour = 20;
         int workingDayInMonth = 20;
         int maxWorkingHrs = 100;
 
-        int monthlyWage = 0;
-        int empHrs = 0;
+        int empHrs;
         int totalEmpHrs = 0;
         int totalWorkingDays = 0;
 
-        while (totalEmpHrs < maxWorkingHrs && totalWorkingDays < workingDayInMonth) {
+        while (totalEmpHrs <= maxWorkingHrs && totalWorkingDays < workingDayInMonth) {
             totalWorkingDays++;
             int empCheck = (int) Math.floor(Math.random() * 3);
             switch (empCheck) {
@@ -33,9 +29,13 @@ public class EmployeeWage {
             }
             totalEmpHrs = totalEmpHrs + empHrs;
         }
-        monthlyWage = totalEmpHrs * wagePerHour;
+        int monthlyWage = totalEmpHrs * wagePerHour;
         System.out.println("Total Employee Hours" + totalEmpHrs);
         System.out.println("Total Working Days" + totalWorkingDays);
         System.out.println("Employee Monthly Wage = " + monthlyWage);
+    }
+    public static void main(String[] args) {
+        EmployeeWage em = new EmployeeWage();
+        em.EmpWageCalculateMethod();
     }
 }
