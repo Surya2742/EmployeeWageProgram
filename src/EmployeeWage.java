@@ -5,6 +5,7 @@ public class EmployeeWage {
     final int wagePerHour;
     final int workingDayInMonth;
     final int maxWorkingHrs;
+    private int totalEmpWage;
     public EmployeeWage(String companyName, int wagePerHour, int workingDayInMonth, int maxWorkingHrs) {
     this.companyName = companyName;
     this.wagePerHour = wagePerHour;
@@ -12,7 +13,7 @@ public class EmployeeWage {
     this.maxWorkingHrs = maxWorkingHrs;
     }
 
-    public int EmpWageCalculateMethod() {
+    public void EmpWageCalculateMethod() {
         int empHrs;
         int totalEmpHrs = 0;
         int totalWorkingDays = 0;
@@ -43,17 +44,27 @@ public class EmployeeWage {
             totalEmpHrs = totalEmpHrs + empHrs;
         }
 
+        System.out.println("Company Name : " + companyName);
         System.out.println("Full Time Attendance : " + fullTimeCounter);
         System.out.println("Part Time Attendance : " + partTimeCounter);
-        System.out.println("Absent count : " + partTimeCounter);
+        System.out.println("Absent count : " + absentCounter);
         System.out.println("Total Employee Hours : " + totalEmpHrs);
-        System.out.println("Total Working Days : " + totalWorkingDays);
-        return totalEmpHrs * wagePerHour;
+        System.out.println("Total Working Days : " + totalWorkingDays + "\n");
+        totalEmpWage = totalEmpHrs * wagePerHour;
+
     }
+
+    @Override
+    public String toString() {
+        return "Total Employee Wage for Company : " + companyName + " is $" + totalEmpWage;
+    }
+
     public static void main(String[] args) {
         EmployeeWage google = new EmployeeWage("Alphabet Inc. ", 100, 20, 100);
-        System.out.println("Total Employee Wage for " + google.companyName + " is : $" + google.EmpWageCalculateMethod() + "\n\n");
+        google.EmpWageCalculateMethod();
         EmployeeWage saiSystem = new EmployeeWage("SaiSystem Technology pvt. ltd.", 80, 24, 120);
-        System.out.println("Total Employee Wage for " + saiSystem.companyName + " is : $" + saiSystem.EmpWageCalculateMethod());
+        saiSystem.EmpWageCalculateMethod();
+        System.out.println(google);
+        System.out.println(saiSystem);
     }
 }
